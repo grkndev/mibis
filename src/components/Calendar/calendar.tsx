@@ -15,7 +15,16 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Icon from "@/lib/Icon";
 import { DialogClose } from "@radix-ui/react-dialog";
-
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { ScrollArea } from "../ui/scroll-area";
+import { Card } from "../ui/card";
 export default function Calendar() {
   return (
     <div className="p-4">
@@ -38,26 +47,31 @@ export default function Calendar() {
         <div className="sm:hidden">Cts</div>
         <div className="sm:hidden">Paz</div>
       </div>
-      <div className="grid grid-cols-7 mt-2 text-center text-sm h-[600px] overflow-y-auto">
+      <div className="grid grid-cols-7 mt-2 text-center text-sm h-auto md:h-[600px] overflow-y-auto">
         {Array.from({ length: moment(Date.now()).daysInMonth() }).map(
           (_, i) => (
-            <Dialog>
-              <DialogTrigger
+            <Sheet>
+              <SheetTrigger
                 className={cn(
-                  "border p-4 hover:bg-muted flex flex-col justify-between ",
-                  new Date(Date.now()).getDate() === i + 1 ? "bg-zinc-300" : ""
+                  "border p-4 hover:bg-muted flex flex-row md:flex-col justify-between items-center md:items-start ",
+                  new Date(Date.now()).getDate() === i + 1
+                    ? "bg-red-300 border-none hover:bg-red-300"
+                    : ""
                 )}
               >
                 <div className="font-bold text-lg">{i + 1}</div>
-                <div className="flex flex-col space-y-1">
-                  <Badge variant="destructive" className="hidden lg:flex">
+                <div className=" flex-col space-y-1">
+                  <Badge
+                    variant="outline"
+                    className="bg-red-200 text-red-500 rounded-lg hidden lg:flex"
+                  >
                     Denetim Günü
                   </Badge>
                 </div>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>
                     {moment(
                       new Date(
                         moment(Date.now()).year(),
@@ -65,69 +79,30 @@ export default function Calendar() {
                         i + 1
                       )
                     ).format("DD MMMM YYYY")}
-                  </DialogTitle>
-                  <DialogDescription>
-                    <div className="flex flex-col space-y-2">
+                  </SheetTitle>
+                  <SheetDescription>
+                    <div className="flex flex-col space-y-2 justify-between items-start">
                       <span className="text-black font-bold">
                         Yapılacaklar listesi ve notlar
                       </span>
-                      <div className="flex items-center justify-center space-x-2">
-                        <Input className="text-black font-semibold" />
+                      <div className="flex items-center justify-center space-x-2 w-full">
+                        <Input className="text-black font-semibold w-full" />
                         <Button variant="default">Ekle</Button>
                       </div>
-                      <div className="border border-zinc-200 rounded-lg p-4">
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                        <Button
-                          variant={"destructive"}
-                          className="space-x-2 items-center justify-center m-1"
-                        >
-                          <Icon name="Trash2" size={18} color="#fff" />
-                          <span className="text-white font-bold">Gün</span>
-                        </Button>
-                      </div>
+                      <ScrollArea className="rounded-md w-full border p-2 h-[60vh]">
+                        {Array.from({ length: 15 }).map((_, i) => (
+                          <Card className="space-x-2 flex flex-row items-center justify-between space-y-1 p-2 my-2">
+                            <span className="font-medium">
+                              Lorem ipsum dolor sit amet
+                            </span>
+                            <Button variant="ghost" className="h-2 p-1">
+                              <Icon name="X" size={16} color="#164B45" />
+                            </Button>
+                          </Card>
+                        ))}
+                      </ScrollArea>
                     </div>
-                  </DialogDescription>
+                  </SheetDescription>
                   <DialogFooter className="sm:justify-start w-full">
                     <DialogClose asChild>
                       <Button type="submit" className="w-full mt-2">
@@ -135,9 +110,9 @@ export default function Calendar() {
                       </Button>
                     </DialogClose>
                   </DialogFooter>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
           )
         )}
       </div>
