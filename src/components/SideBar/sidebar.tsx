@@ -58,12 +58,10 @@ function MobileSideBar() {
       <SheetTrigger className="flex">
         <Icon name="AlignJustify" size={24} />
       </SheetTrigger>
-      <SheetContent side={"right"} >
-        <SheetHeader className="flex flex-col space-y-2  h-full " >
-          <SheetTitle>
-            Menü
-          </SheetTitle>
-          <SheetDescription className="flex flex-col space-y-2" >
+      <SheetContent side={"right"}>
+        <SheetHeader className="flex flex-col space-y-2  h-full ">
+          <SheetTitle>Menü</SheetTitle>
+          <SheetDescription className="flex flex-col space-y-2">
             <SideBarItems key={"mobile"} />
           </SheetDescription>
           <SheetFooter className="flex flex-col justify-end h-full">
@@ -76,8 +74,9 @@ function MobileSideBar() {
 }
 function SideBarItems() {
   const useNavigation = usePathname();
-  return paths.map((path) => (
+  return paths.map((path, i) => (
     <Button
+      key={`${path.name}-${i}`}
       asChild
       className={cn(
         "text-[#164B45] justify-start items-center gap-x-2 hover:bg-zinc-200",

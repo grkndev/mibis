@@ -50,7 +50,7 @@ export default function Calendar() {
       <div className="grid grid-cols-7 mt-2 text-center text-sm h-auto md:h-[600px] overflow-y-auto">
         {Array.from({ length: moment(Date.now()).daysInMonth() }).map(
           (_, i) => (
-            <Sheet>
+            <Sheet key={i}>
               <SheetTrigger
                 className={cn(
                   "border p-4 hover:bg-muted flex flex-row md:flex-col justify-between items-center md:items-start ",
@@ -91,7 +91,7 @@ export default function Calendar() {
                       </div>
                       <ScrollArea className="rounded-md w-full border p-2 h-[60vh]">
                         {Array.from({ length: 15 }).map((_, i) => (
-                          <Card className="space-x-2 flex flex-row items-center justify-between space-y-1 p-2 my-2">
+                          <Card key={i} className="space-x-2 flex flex-row items-center justify-between space-y-1 p-2 my-2">
                             <span className="font-medium">
                               Lorem ipsum dolor sit amet
                             </span>
