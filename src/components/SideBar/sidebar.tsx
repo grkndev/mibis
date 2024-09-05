@@ -26,9 +26,9 @@ export default function SideBar() {
   return (
     <div className="flex flex-col">
       <div className="md:hidden py-6 px-6 flex flex-row items-center justify-between border-b">
-        <div className="flex felx-row items-center justify-center">
-          <span className="font-bold text-lg">GRKNDEV</span>
-          <span className="text-lg">QR MENU</span>
+        <div className="flex felx-row items-center justify-center space-x-1">
+          <span className="font-bold text-lg">MİBİS</span>
+          <span className="text-sm">BİLGİ İŞLEM SİSTEMİ</span>
         </div>
         <MobileSideBar />
       </div>
