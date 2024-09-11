@@ -112,9 +112,9 @@ function SideBarFooter() {
       >
         <Icon name="LogOut" size={16} color="#164B45" /> Çıkış Yap
       </Button>
-      <div className="w-full h-1 bg-[#CEF9EE]" />
-      <Card className="bg-transparent border-none">
-        <CardContent className=" p-2  flex items-center justify-start space-x-2 ">
+      <div className="w-full h-[2px] bg-zinc-200" />
+      <div className="bg-transparent border-none">
+        <div className=" p-2  flex items-center justify-start space-x-2 ">
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
@@ -125,9 +125,9 @@ function SideBarFooter() {
               Hatay OBM İşletmeler Saymanı
             </span>
           </div>
-        </CardContent>
-      </Card>
-      <span className="text-center text-black/25 p-1">©️ 2024. GRKN.DEV</span>
+        </div>
+      </div>
+      <span className="text-center text-black/25 p-1 text-[12px]">©️ 2024. GRKN.DEV</span>
     </div>
   );
 }
