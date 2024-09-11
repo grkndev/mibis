@@ -44,9 +44,9 @@ export default function Calendar() {
       "border-zinc-200",
       (isFirstRow || row === 1) ? "border-t" : "",
       isLastRow ? "border-b" : "",
-      (isFirstInRow || index === 0) ? "border-l" : "",
+      (isFirstInRow || index === 0) ? "border-l " : "",
       isLastInRow ? "border-r" : "",
-      "border-r border-b" // Always add right and bottom borders
+      "border-r border-b", // Always add right and bottom borders
     );
   };
 
@@ -66,10 +66,10 @@ export default function Calendar() {
       <div className="grid grid-cols-7 mt-2 text-center text-sm h-auto md:h-[600px] overflow-y-auto">
         {Array.from({ length: startingDay }).map((_, index) => (
           <div key={`empty-${index}`} className={cn(
-            "p-4",
+            "p-3",
             "border-zinc-200",
             "border-t border-l",
-            index === startingDay - 1 ? "border-r" : ""
+            // index === startingDay - 1 ? "" : ""
           )}></div>
         ))}
         {Array.from({ length: daysInMonth }).map((_, index) => {
