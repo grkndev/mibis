@@ -3,7 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import UserCard from "../UserCard/card";
 import moment from "moment";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, Eye, FileText, Pencil, Sheet, Trash } from "lucide-react";
 
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -190,15 +190,30 @@ export const columns: ColumnDef<Harcirah>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel>İşlemler</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Copy payment ID
+              <Pencil className="mr-2 h-4 w-4" />
+              <p>Harcırahı düzenle</p>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Eye className="mr-2 h-4 w-4 " />
+              <p className="">Harcırahı görüntüle</p>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <FileText className="mr-2 h-4 w-4 text-blue-700" />
+              <p className="text-blue-700">Harcırahı indir (PDF)</p>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Sheet className="mr-2 h-4 w-4 text-green-700" />
+              <p className="text-green-700">Harcırahı indir (Excel)</p>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Trash className="mr-2 h-4 w-4 text-red-500" />
+              <p className="text-red-500">Harcırahı sil</p>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
