@@ -42,8 +42,7 @@ export default function SideBar() {
             className="px-4"
           />
           <div className="w-full h-[1px] bg-primary/10" />
-          <span className="text-primary font-semibold">Genel</span>
-          <div className="flex flex-col w-full space-y-2">
+          <div className="flex flex-col w-full space-y-2 ">
             <SideBarItems />
           </div>
         </div>
@@ -79,9 +78,9 @@ function SideBarItems() {
       key={`${path.name}-${i}`}
       asChild
       className={cn(
-        "text-[#164B45] justify-start items-center gap-x-2 hover:bg-zinc-200",
+        "text-[#164B45] rounded-2xl justify-start items-center gap-x-2 hover:bg-zinc-200",
         useNavigation === path.path
-          ? "bg-primary text-white hover:text-white hover:bg-primary/90"
+          ? "bg-zinc-300 text-black hover:text-black hover:bg-zinc-300/90"
           : ""
       )}
       variant={"ghost"}
@@ -90,7 +89,7 @@ function SideBarItems() {
         <Icon
           name={path.icon}
           size={16}
-          color={useNavigation === path.path ? "#fff" : "#164B45"}
+          color={useNavigation === path.path ? "#000" : "#164B45"}
         />
         <p className="text-sm font-semibold">{path.name}</p>
       </Link>

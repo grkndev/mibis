@@ -23,12 +23,18 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex md:flex-row flex-col",
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
-        <SideBar />
-        {children}
+        <div className="flex md:flex-row flex-col h-screen overflow-hidden">
+          <div className="md:flex-shrink-0 md:overflow-y-auto md:sticky md:top-0 md:h-screen">
+            <SideBar />
+          </div>
+          <main className="flex-grow overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );
